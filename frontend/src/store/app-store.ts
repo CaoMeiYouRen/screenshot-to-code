@@ -9,8 +9,10 @@ interface AppStore {
   // UI state
   updateInstruction: string;
   setUpdateInstruction: (instruction: string) => void;
-  shouldIncludeResultImage: boolean;
-  setShouldIncludeResultImage: (shouldInclude: boolean) => void;
+
+  // Update images support (multiple images)
+  updateImages: string[];
+  setUpdateImages: (images: string[]) => void;
 
   inSelectAndEditMode: boolean;
   toggleInSelectAndEditMode: () => void;
@@ -25,9 +27,10 @@ export const useAppStore = create<AppStore>((set) => ({
   updateInstruction: "",
   setUpdateInstruction: (instruction: string) =>
     set({ updateInstruction: instruction }),
-  shouldIncludeResultImage: true,
-  setShouldIncludeResultImage: (shouldInclude: boolean) =>
-    set({ shouldIncludeResultImage: shouldInclude }),
+
+  // Update images support
+  updateImages: [],
+  setUpdateImages: (images: string[]) => set({ updateImages: images }),
 
   inSelectAndEditMode: false,
   toggleInSelectAndEditMode: () =>
